@@ -90,7 +90,7 @@
 		<!--materialize js-->
 		<script type="text/javascript" src="{{ asset('js/materialize.min.js', config('app.asset')) }}"></script>
 		<!-- prism -->
-		<script type="text/javascript" src="{{ asset('js/prism/prism.js', config('app.asset')) }}"></script>
+		<script type="text/javascript" src="{{ asset('js/plugins/prism/prism.js', config('app.asset')) }}"></script>
 		<!--scrollbar-->
 		<script type="text/javascript" src="{{ asset('js/plugins/perfect-scrollbar/perfect-scrollbar.min.js', config('app.asset')) }}"></script>
 		<!-- chartist -->
