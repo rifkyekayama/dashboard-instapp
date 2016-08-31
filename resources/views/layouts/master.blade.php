@@ -21,10 +21,10 @@
 
 
 	<!-- CORE CSS-->
-	<link href="{{ asset('css/materialize.min.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
-	<link href="{{ asset('css/style.min.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
+	<link href="{{ HTML::style('css/materialize.min.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
+	<link href="{{ HTML::style('css/style.min.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
 	<!-- Custome CSS-->    
-	<link href="{{ asset('css/custom/custom.min.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
+	<link href="{{ HTML::style('css/custom/custom.min.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
 
 	<!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
 	<link href="{{ asset('js/plugins/prism/prism.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
