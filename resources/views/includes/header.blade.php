@@ -4,14 +4,14 @@
 		<nav class="navbar-color">
 			<div class="nav-wrapper">
 				<ul class="left">                      
-					<li><h1 class="logo-wrapper"><a href="index.html" class="brand-logo darken-1"><img src="{{ asset('images/materialize-logo.png') }}" alt="materialize logo"></a> <span class="logo-text">Materialize</span></h1></li>
+					<li><h1 class="logo-wrapper"><a href="index.html" class="brand-logo darken-1"><img src="{{ asset('images/materialize-logo.png', config('app.asset')) }}" alt="materialize logo"></a> <span class="logo-text">Materialize</span></h1></li>
 				</ul>
 				<div class="header-search-wrapper hide-on-med-and-down">
 						<i class="mdi-action-search"></i>
 						<input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize"/>
 				</div>
 				<ul class="right hide-on-med-and-down">
-						<li><a href="javascript:void(0);" class="waves-effect waves-block waves-light translation-button"  data-activates="translation-dropdown"><img src="{{ asset('images/flag-icons/'.App::getLocale().'.png') }}" alt="USA" /></a>
+						<li><a href="javascript:void(0);" class="waves-effect waves-block waves-light translation-button"  data-activates="translation-dropdown"><img src="{{ asset('images/flag-icons/'.App::getLocale().'.png', config('app.asset')) }}" alt="USA" /></a>
 						</li>
 						<li><a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen"><i class="mdi-action-settings-overscan"></i></a>
 						</li>
@@ -25,10 +25,10 @@
 				<!-- translation-button -->
 				<ul id="translation-dropdown" class="dropdown-content">
 					<li>
-						<a href="{{-- App\Helpers\AppHelpers::changeLang(Request::url(), 'en') --}}"><img src="{{ asset('images/flag-icons/en.png') }}" alt="{{ trans('menu.english') }}" />  <span class="language-select">{{ trans('menu.english') }}</span></a>
+						<a href="{{-- App\Helpers\AppHelpers::changeLang(Request::url(), 'en') --}}"><img src="{{ asset('images/flag-icons/en.png', config('app.asset')) }}" alt="{{ trans('menu.english') }}" />  <span class="language-select">{{ trans('menu.english') }}</span></a>
 					</li>
 					<li>
-						<a href="{{-- App\Helpers\AppHelpers::changeLang(Request::url(), 'id') --}}"><img src="{{ asset('images/flag-icons/id.png') }}" alt="{{ trans('menu.indonesian') }}" />  <span class="language-select">{{ trans('menu.indonesian') }}</span></a>
+						<a href="{{-- App\Helpers\AppHelpers::changeLang(Request::url(), 'id') --}}"><img src="{{ asset('images/flag-icons/id.png', config('app.asset')) }}" alt="{{ trans('menu.indonesian') }}" />  <span class="language-select">{{ trans('menu.indonesian') }}</span></a>
 					</li>
 				</ul>
 				<!-- notifications-dropdown -->
