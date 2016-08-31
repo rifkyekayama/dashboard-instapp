@@ -11,25 +11,25 @@
 	<title>@yield('title') | Materialize - Material Design Admin Template</title>
 
 	<!-- Favicons-->
-	<link rel="icon" href="{{ asset('images/favicon/favicon-32x32.png') }}" sizes="32x32">
+	<link rel="icon" href="{{ asset('images/favicon/favicon-32x32.png', config('app.asset')) }}" sizes="32x32">
 	<!-- Favicons-->
-	<link rel="apple-touch-icon-precomposed" href="{{ asset('images/favicon/apple-touch-icon-152x152.png') }}">
+	<link rel="apple-touch-icon-precomposed" href="{{ asset('images/favicon/apple-touch-icon-152x152.png', config('app.asset')) }}">
 	<!-- For iPhone -->
 	<meta name="msapplication-TileColor" content="#00bcd4">
-	<meta name="msapplication-TileImage" content="{{ asset('images/favicon/mstile-144x144.png') }}">
+	<meta name="msapplication-TileImage" content="{{ asset('images/favicon/mstile-144x144.png', config('app.asset')) }}">
 	<!-- For Windows Phone -->
 
 
 	<!-- CORE CSS-->
-	<link href="{{ asset('css/materialize.min.css') }}" type="text/css" rel="stylesheet">
-	<link href="{{ asset('css/style.min.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
+	<link href="{{ asset('css/materialize.min.css', config('app.asset')) }}" type="text/css" rel="stylesheet" media="screen,projection">
+	<link href="{{ asset('css/style.min.css', config('app.asset')) }}" type="text/css" rel="stylesheet" media="screen,projection">
 	<!-- Custome CSS-->    
-	<link href="{{ asset('css/custom/custom.min.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
+	<link href="{{ asset('css/custom/custom.min.css', config('app.asset')) }}" type="text/css" rel="stylesheet" media="screen,projection">
 
 	<!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
-	<link href="{{ asset('js/plugins/prism/prism.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
-	<link href="{{ asset('js/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
-	<link href="{{ asset('js/plugins/chartist-js/chartist.min.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
+	<link href="{{ asset('js/plugins/prism/prism.css', config('app.asset')) }}" type="text/css" rel="stylesheet" media="screen,projection">
+	<link href="{{ asset('js/plugins/perfect-scrollbar/perfect-scrollbar.css', config('app.asset')) }}" type="text/css" rel="stylesheet" media="screen,projection">
+	<link href="{{ asset('js/plugins/chartist-js/chartist.min.css', config('app.asset')) }}" type="text/css" rel="stylesheet" media="screen,projection">
 </head>
 
 <body>
@@ -86,20 +86,20 @@
 	<!-- END FOOTER -->
 		
 		<!-- jQuery Library -->
-		<script type="text/javascript" src="{{ asset('js/plugins/jquery-1.11.2.min.js') }}"></script>    
+		<script type="text/javascript" src="{{ asset('js/plugins/jquery-1.11.2.min.js', config('app.asset')) }}"></script>    
 		<!--materialize js-->
-		<script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/materialize.min.js', config('app.asset')) }}"></script>
 		<!-- prism -->
-		<script type="text/javascript" src="{{ asset('js/prism/prism.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/prism/prism.js', config('app.asset')) }}"></script>
 		<!--scrollbar-->
-		<script type="text/javascript" src="{{ asset('js/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/plugins/perfect-scrollbar/perfect-scrollbar.min.js', config('app.asset')) }}"></script>
 		<!-- chartist -->
-		<script type="text/javascript" src="{{ asset('js/plugins/chartist-js/chartist.min.js') }}"></script>   
+		<script type="text/javascript" src="{{ asset('js/plugins/chartist-js/chartist.min.js', config('app.asset')) }}"></script>   
 		
 		<!--plugins.js - Some Specific JS codes for Plugin Settings-->
-		<script type="text/javascript" src="{{ asset('js/plugins.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/plugins.min.js', config('app.asset')) }}"></script>
 		<!--custom-script.js - Add your own theme custom JS-->
-		<script type="text/javascript" src="{{ asset('js/custom-script.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/custom-script.js', config('app.asset')) }}"></script>
 		
 </body>
 
