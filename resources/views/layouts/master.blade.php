@@ -21,7 +21,7 @@
 
 
 	<!-- CORE CSS-->
-	<link href="{{ HTML::style('css/materialize.min.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
+	<link href="{{ HTML::style('css/materialize.min.css') }}" type="text/css" rel="stylesheet">
 	<link href="{{ HTML::style('css/style.min.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
 	<!-- Custome CSS-->    
 	<link href="{{ HTML::style('css/custom/custom.min.css') }}" type="text/css" rel="stylesheet" media="screen,projection">
