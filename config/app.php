@@ -180,6 +180,7 @@ return [
          */
         Jenssegers\Mongodb\MongodbServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Zalazdi\LaravelImap\LaravelImapServiceProvider::class,
 
         //
 
