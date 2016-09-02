@@ -2,23 +2,25 @@
 
 namespace App\Http\Middleware;
 
+use Auth;
+use Session;
 use Closure;
-use Illuminate\Support\Facades\Auth;
 
-class RedirectIfAuthenticated
+class AuthPolicy
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
-     * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle($request, Closure $next)
     {
-        if (Auth::guard($guard)->check()) {
-            return redirect('/');
+        if (Auth::user()->session_id != Session::getId())
+        {
+            Auth::logout();
+            return redirect()->guest('/login');
         }
 
         return $next($request);

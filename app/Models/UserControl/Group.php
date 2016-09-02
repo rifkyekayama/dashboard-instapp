@@ -3,6 +3,7 @@
 namespace App\Models\UserControl;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Group extends Model
 {

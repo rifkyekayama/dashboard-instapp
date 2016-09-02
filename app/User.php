@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Models\UserControl;
+namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\UserControl\Group;
 
 class User extends Authenticatable
 {
