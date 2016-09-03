@@ -4,51 +4,39 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Models\Mails\Mails;
 
-use App\Libs\PhpImap\Mailbox as ImapMailbox;
-use App\Libs\PhpImap\IncomingMail;
-use App\Libs\PhpImap\IncomingMailAttachment;
+use App\Helpers\MailHelpers;
 
 class homeController extends Controller
 {
     //
     public function index(){
-    	// return view('pages.home')->withTitle('Dashboard');
+    	$mail = Mails::orderBy('mail_index')->get();
+    	$head = json_decode($mail[0]->content);
+    	$header = [];
+    	for($i=1;$i<sizeof($head);$i+=2){
+    		array_push($header, $head[$i]);
+    	}
+    	return view('pages.home', ['mails' => $mail, 'header' => $header])->withTitle('Dashboard');
+    }
 
-    	$mailbox = new ImapMailbox('{imap.gmail.com:993/imap/ssl}INBOX', config('imap.username'), config('imap.password'), app_path('Mails/Attachments/'));
+    public function mail(){
+    	$mail = new MailHelpers();
+    	$mail->readAllMails();
+    	// $message = $mail->getMessages();
+    	$message = $mail->getMessagesUnRead();
 
-		// Read all messaged into an array:
-		$mailsIds = $mailbox->searchMailbox('ALL');
-		if(!$mailsIds) {
-		    die('Mailbox is empty');
-		}
+    	dd($message);
 
-		// Get the first message and save its attachment(s) to disk:
-		$mail = $mailbox->getMail($mailsIds[sizeof($mailsIds)-1]);
-
-		echo "<pre>";
-		echo print_r($mail);
-		echo "\n\n\n\n\n";
-		// print_r($mail->getAttachments());
-
-		foreach ($mail->getAttachments() as $attach) {
-			# code...
-			$ext = pathinfo($attach->filePath, PATHINFO_EXTENSION);
-			if($ext == "html"){
-				$myfile = fopen($attach->filePath, "r") or die("Unable to open file!");
-				$text = fread($myfile,filesize($attach->filePath));
-
-				$clean = strip_tags($text);
-
-				$val = explode(PHP_EOL, $clean);
-				
-				for($i=0;$i<sizeof($val);$i++){
-					$val[$i] = trim($val[$i]);
-				}
-
-				echo print_r(array_values(array_filter($val, function($value) { return $value !== ''; })));
-			}
-			echo "\n";
-		}
+    	// foreach($message as $val){
+    	// 	$mails = new Mails;
+    	// 	$mails->mail_index = $val['mail_index'];
+    	// 	$mails->date = $val['date'];
+    	// 	$mails->from = $val['from'];
+    	// 	$mails->subject = $val['subject'];
+    	// 	$mails->content = $val['content'];
+    	// 	$mails->save();
+    	// }
     }
 }

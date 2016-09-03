@@ -33,6 +33,42 @@
 		<div class="section">
 			<p class="caption">A Simple Blank Page to use it for your custome design and elements.</p>
 			<div class="divider"></div>
+			<!--Responsive Table-->
+			<div class="divider"></div>
+			<div id="responsive-table">
+				<h4 class="header">Responsive Table</h4>
+				<div class="row">
+					<div class="col l12">
+						<table class="responsive-table">
+							<thead>
+								<tr>
+									<th data-field="date">Date</th>
+									<th data-field="from">From</th>
+									<th data-field="subject">Subject</th>
+									@foreach($header as $val)
+										<th>{{ $val }}</th>
+									@endforeach
+								</tr>
+							</thead>
+							<tbody>
+								@foreach($mails as $val)
+									<tr>
+										<td>{{ date("D, d M Y", strtotime($val->date)) }}</td>
+										<td>{{ $val->from }}</td>
+										<td>{{ $val->subject }}</td>
+										@php
+											$content = json_decode($val->content)
+										@endphp
+										@for($i=2;$i<sizeof($content);$i+=2)
+											<td>{{ $content[$i] }}</td>
+										@endfor
+									</tr>
+								@endforeach
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
 		</div>
 		<!-- Floating Action Button -->
 		<div class="fixed-action-btn" style="bottom: 50px; right: 19px;">
