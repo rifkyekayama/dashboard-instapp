@@ -12,6 +12,25 @@ class homeController extends Controller
 {
     //
     public function index(){
+    	$mail = new MailHelpers();
+    	$mail->readAllMails();
+    	if(Mails::count() == 0){
+    		$message = $mail->getMessages();
+    	}else{
+    		$message = $mail->getMessagesUnRead();
+    	}
+
+    	foreach($message as $val){
+    		$mails = new Mails;
+    		$mails->mail_index = $val['mail_index'];
+    		$mails->date = $val['date'];
+    		$mails->from = $val['from'];
+    		$mails->subject = $val['subject'];
+    		$mails->content = $val['content'];
+    		$mails->isread = 'false';
+    		$mails->save();
+    	}
+
     	$mail = Mails::orderBy('mail_index', 'desc')->get();
     	$head = json_decode($mail[0]->content);
     	$header = [];
@@ -34,6 +53,7 @@ class homeController extends Controller
     		$mails->from = $val['from'];
     		$mails->subject = $val['subject'];
     		$mails->content = $val['content'];
+    		$mails->isread = 'false';
     		$mails->save();
     	}
     }
@@ -51,6 +71,7 @@ class homeController extends Controller
     		$mails->from = $val['from'];
     		$mails->subject = $val['subject'];
     		$mails->content = $val['content'];
+    		$mails->isread = 'false';
     		$mails->save();
     	}
     }

@@ -39,23 +39,19 @@
 				<h4 class="header">Responsive Table</h4>
 				<div class="row">
 					<div class="col l12">
-						<table class="responsive-table">
+						<table class="responsive-table" id="tableMail">
 							<thead>
 								<tr>
-									<th data-field="date">Date</th>
-									<th data-field="from">From</th>
-									<th data-field="subject">Subject</th>
+									<th>Date</th>
 									@foreach($header as $val)
-										<th>{{ $val }}</th>
+										<th>{{ preg_replace("/::/", ":", $val) }}</th>
 									@endforeach
 								</tr>
 							</thead>
 							<tbody>
 								@foreach($mails as $val)
-									<tr>
+									<tr bgcolor={{ $val->isread == 'false' ? 'yellow' : '' }}>
 										<td>{{ date("D, d M Y", strtotime($val->date)) }}</td>
-										<td>{{ $val->from }}</td>
-										<td>{{ $val->subject }}</td>
 										@php
 											$content = json_decode($val->content)
 										@endphp

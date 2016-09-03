@@ -85,22 +85,23 @@
 	@include('includes/footer')
 	<!-- END FOOTER -->
 		
-		<!-- jQuery Library -->
-		<script type="text/javascript" src="{{ asset('js/plugins/jquery-1.11.2.min.js', config('app.asset')) }}"></script>    
-		<!--materialize js-->
-		<script type="text/javascript" src="{{ asset('js/materialize.min.js', config('app.asset')) }}"></script>
-		<!-- prism -->
-		<script type="text/javascript" src="{{ asset('js/plugins/prism/prism.js', config('app.asset')) }}"></script>
-		<!--scrollbar-->
-		<script type="text/javascript" src="{{ asset('js/plugins/perfect-scrollbar/perfect-scrollbar.min.js', config('app.asset')) }}"></script>
-		<!-- chartist -->
-		<script type="text/javascript" src="{{ asset('js/plugins/chartist-js/chartist.min.js', config('app.asset')) }}"></script>   
+	<!-- jQuery Library -->
+	<script type="text/javascript" src="{{ asset('js/plugins/jquery-1.11.2.min.js', config('app.asset')) }}"></script>    
+	<!--materialize js-->
+	<script type="text/javascript" src="{{ asset('js/materialize.min.js', config('app.asset')) }}"></script>
+	<!-- prism -->
+	<script type="text/javascript" src="{{ asset('js/plugins/prism/prism.js', config('app.asset')) }}"></script>
+	<!--scrollbar-->
+	<script type="text/javascript" src="{{ asset('js/plugins/perfect-scrollbar/perfect-scrollbar.min.js', config('app.asset')) }}"></script>
+	<!-- chartist -->
+	<script type="text/javascript" src="{{ asset('js/plugins/chartist-js/chartist.min.js', config('app.asset')) }}"></script>   
+	
+	<!--plugins.js - Some Specific JS codes for Plugin Settings-->
+	<script type="text/javascript" src="{{ asset('js/plugins.min.js', config('app.asset')) }}"></script>
+	<!--custom-script.js - Add your own theme custom JS-->
+	<script type="text/javascript" src="{{ asset('js/custom-script.js', config('app.asset')) }}"></script>
 		
-		<!--plugins.js - Some Specific JS codes for Plugin Settings-->
-		<script type="text/javascript" src="{{ asset('js/plugins.min.js', config('app.asset')) }}"></script>
-		<!--custom-script.js - Add your own theme custom JS-->
-		<script type="text/javascript" src="{{ asset('js/custom-script.js', config('app.asset')) }}"></script>
-		
+	@yield('js')
 </body>
 
 </html>

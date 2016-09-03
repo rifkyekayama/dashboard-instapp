@@ -20,6 +20,7 @@ class CreateMailsTable extends Migration
             $table->string('from');
             $table->string('subject');
             $table->text('content');
+            $table->enum('isread', ['true', 'false']);
             $table->timestamps();
         });
     }
