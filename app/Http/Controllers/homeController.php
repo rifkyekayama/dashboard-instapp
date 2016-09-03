@@ -12,7 +12,7 @@ class homeController extends Controller
 {
     //
     public function index(){
-    	$mail = Mails::orderBy('mail_index')->get();
+    	$mail = Mails::orderBy('mail_index', 'desc')->get();
     	$head = json_decode($mail[0]->content);
     	$header = [];
     	for($i=1;$i<sizeof($head);$i+=2){
