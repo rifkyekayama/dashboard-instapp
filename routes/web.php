@@ -26,5 +26,6 @@ Route::get('login', ['as' => 'auth.login', 'uses' => 'Auth\LoginController@showL
 
 // Route::group(['middleware' => ['auth', 'auth.policy']], function(){
 	Route::get('/', ['as' => 'index', 'uses' => 'homeController@index']);
-	Route::get('mail', ['as' => 'mail', 'uses' => 'homeController@mail']);
+	Route::get('unread', ['as' => 'mail', 'uses' => 'homeController@messageUnRead']);
+	Route::get('allmessage', ['as' => 'mail', 'uses' => 'homeController@allMessage']);
 // });
