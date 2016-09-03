@@ -21,14 +21,16 @@ class homeController extends Controller
     	}
 
     	foreach($message as $val){
-    		$mails = new Mails;
-    		$mails->mail_index = $val['mail_index'];
-    		$mails->date = $val['date'];
-    		$mails->from = $val['from'];
-    		$mails->subject = $val['subject'];
-    		$mails->content = $val['content'];
-    		$mails->isread = 'false';
-    		$mails->save();
+    		if(strpos($val['subject'], "Please, Request a Project and be Our Next Client") && strpos($val['subject'], "[Vertikal Digital Indonesia]")){
+    			$mails = new Mails;
+	    		$mails->mail_index = $val['mail_index'];
+	    		$mails->date = $val['date'];
+	    		$mails->from = $val['from'];
+	    		$mails->subject = $val['subject'];
+	    		$mails->content = $val['content'];
+	    		$mails->isread = 'false';
+	    		$mails->save();
+    		}
     	}
 
     	$mail = Mails::orderBy('mail_index', 'desc')->get();
@@ -38,41 +40,5 @@ class homeController extends Controller
     		array_push($header, $head[$i]);
     	}
     	return view('pages.home', ['mails' => $mail, 'header' => $header])->withTitle('Dashboard');
-    }
-
-    public function allMessage(){
-    	$mail = new MailHelpers();
-    	$mail->readAllMails();
-    	$message = $mail->getMessages();
-    	// $message = $mail->getMessagesUnRead();
-
-    	foreach($message as $val){
-    		$mails = new Mails;
-    		$mails->mail_index = $val['mail_index'];
-    		$mails->date = $val['date'];
-    		$mails->from = $val['from'];
-    		$mails->subject = $val['subject'];
-    		$mails->content = $val['content'];
-    		$mails->isread = 'false';
-    		$mails->save();
-    	}
-    }
-
-    public function messageUnRead(){
-    	$mail = new MailHelpers();
-    	$mail->readAllMails();
-    	// $message = $mail->getMessages();
-    	$message = $mail->getMessagesUnRead();
-
-    	foreach($message as $val){
-    		$mails = new Mails;
-    		$mails->mail_index = $val['mail_index'];
-    		$mails->date = $val['date'];
-    		$mails->from = $val['from'];
-    		$mails->subject = $val['subject'];
-    		$mails->content = $val['content'];
-    		$mails->isread = 'false';
-    		$mails->save();
-    	}
     }
 }
