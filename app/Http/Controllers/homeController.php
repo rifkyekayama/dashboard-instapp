@@ -21,22 +21,37 @@ class homeController extends Controller
     	return view('pages.home', ['mails' => $mail, 'header' => $header])->withTitle('Dashboard');
     }
 
-    public function mail(){
+    public function allMessage(){
+    	$mail = new MailHelpers();
+    	$mail->readAllMails();
+    	$message = $mail->getMessages();
+    	// $message = $mail->getMessagesUnRead();
+
+    	foreach($message as $val){
+    		$mails = new Mails;
+    		$mails->mail_index = $val['mail_index'];
+    		$mails->date = $val['date'];
+    		$mails->from = $val['from'];
+    		$mails->subject = $val['subject'];
+    		$mails->content = $val['content'];
+    		$mails->save();
+    	}
+    }
+
+    public function messageUnRead(){
     	$mail = new MailHelpers();
     	$mail->readAllMails();
     	// $message = $mail->getMessages();
     	$message = $mail->getMessagesUnRead();
 
-    	dd($message);
-
-    	// foreach($message as $val){
-    	// 	$mails = new Mails;
-    	// 	$mails->mail_index = $val['mail_index'];
-    	// 	$mails->date = $val['date'];
-    	// 	$mails->from = $val['from'];
-    	// 	$mails->subject = $val['subject'];
-    	// 	$mails->content = $val['content'];
-    	// 	$mails->save();
-    	// }
+    	foreach($message as $val){
+    		$mails = new Mails;
+    		$mails->mail_index = $val['mail_index'];
+    		$mails->date = $val['date'];
+    		$mails->from = $val['from'];
+    		$mails->subject = $val['subject'];
+    		$mails->content = $val['content'];
+    		$mails->save();
+    	}
     }
 }
