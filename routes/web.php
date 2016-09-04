@@ -29,5 +29,7 @@ Route::get('login', ['as' => 'auth.login', 'uses' => 'Auth\LoginController@showL
 	Route::get('unread', ['as' => 'mail', 'uses' => 'Mails\MailsController@messageUnRead']);
 	Route::get('allmessage', ['as' => 'mail', 'uses' => 'Mails\MailsController@allMessage']);
 
+	Route::get('order', ['as' => 'index', 'uses' => 'homeController@order']);
+
 	Route::resource('mail', 'Mails\MailsController');
 // });

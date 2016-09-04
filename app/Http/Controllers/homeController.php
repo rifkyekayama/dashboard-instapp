@@ -41,4 +41,10 @@ class homeController extends Controller
     	}
     	return view('pages.home', ['mails' => $mail, 'header' => $header])->withTitle('Dashboard');
     }
+
+    public function order(){
+    	$mail = new MailHelpers();
+    	$mail->readAllMails();
+    	$mail->getOrder();
+    }
 }
