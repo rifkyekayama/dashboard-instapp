@@ -69,7 +69,7 @@ class homeController extends Controller
 				$cust->birthdate		= date("Y-m-d", strtotime($val['birthdate']));
 				$cust->gender			= $val['gender'];
 				$cust->contact_email	= $val['contact_email'];
-				$cust->link_to_customer	= $val['link_to_customer'];
+				$cust->link_to_customer	= '<a target="_blank" href="http://apps.instapp.id/enduser/'.$val['customer_id'].'/show">'.$val['link_to_customer'].'</a>';
 				$cust->save();
 			}
 

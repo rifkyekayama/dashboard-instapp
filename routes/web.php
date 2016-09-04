@@ -32,4 +32,7 @@ Route::get('login', ['as' => 'auth.login', 'uses' => 'Auth\LoginController@showL
 	Route::get('order', ['as' => 'index', 'uses' => 'homeController@order']);
 
 	Route::resource('mail', 'Mails\MailsController');
+
+	Route::resource('customer', 'Transaction\CustomerController');
+	Route::resource('transaction', 'Transaction\TransactionController');
 // });
