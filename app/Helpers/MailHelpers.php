@@ -14,7 +14,7 @@ class MailHelpers{
 	private $mailsIds;
 
 	public function __construct(){
-		$this->mailbox = new ImapMailbox('{imap.gmail.com:993/imap/ssl}INBOX', config('imap.username'), config('imap.password'), app_path('Mails/Attachments/'));
+		$this->mailbox = new ImapMailbox('{imap.gmail.com:993/imap/ssl/novalidate-cert}INBOX', config('imap.username'), config('imap.password'), app_path('Mails/Attachments/'));
 	}
 
 	public function readAllMails(){
