@@ -146,16 +146,15 @@ class MailHelpers{
 						for($i=0;$i<sizeof($mailContent);$i++){
 							if(strpos($mailContent[$i], "Details:") !== false){
 								$j=$i+1;
-								$switch=true;
+								$isCustomer=true;
 								$x=1;
-								while($switch){
+								while($isCustomer){
 									if(strpos($mailContent[$j], "Customer ID:") !== false){
-										$switch=false;
+										$isCustomer=false;
 									}else{
 										if($x==1){
 											array_push($item, [$mailContent[$j], $mailContent[$j+1], $mailContent[$j+2]]);
 										}
-										// echo $mailContent[$j]."\n";
 										$j++;
 										$x++;
 										if($x == 4){
@@ -166,8 +165,6 @@ class MailHelpers{
 								$i=$j;
 							}
 						}
-
-						echo print_r($item);
 					}
 				}
 
@@ -234,15 +231,12 @@ class MailHelpers{
 					}
 				}
 				array_push($result, $order);
-
-				echo "<pre>";
-				echo print_r($result);
 			}else{
 				$switch = false;
 			}
 			$index--;
 		}
 
-		// return array_reverse($result);
+		return array_reverse($result);
 	}
 }
