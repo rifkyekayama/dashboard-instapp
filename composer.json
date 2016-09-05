@@ -9,7 +9,8 @@
         "laravel/framework": "5.3.*",
 		"laravelcollective/html": "5.3.*",
         "jenssegers/mongodb": "^3.0",
-        "php-imap/php-imap": "~2.0"
+        "php-imap/php-imap": "~2.0",
+        "pusher/pusher-php-server": "^2.6"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

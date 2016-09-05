@@ -100,8 +100,7 @@
 	<script type="text/javascript" src="{{ asset('js/plugins.min.js', config('app.asset')) }}"></script>
 	<!--custom-script.js - Add your own theme custom JS-->
 	<script type="text/javascript" src="{{ asset('js/custom-script.js', config('app.asset')) }}"></script>
-	{{-- LeanJs --}}
-	<script type="text/javascript" src="{{-- asset('js/jquery.leanModal.min.js', config('app.asset')) --}}"></script>
+
 	@yield('js')
 </body>
 

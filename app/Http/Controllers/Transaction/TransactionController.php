@@ -19,7 +19,7 @@ class TransactionController extends Controller
     public function index()
     {
         //
-        $transactions = Transaction::all();
+        $transactions = Transaction::orderBy('id_transaction', 'desc')->get();
         return view('pages.transaction.index', ['transactions' => $transactions])->withTitle('Transaction');
     }
 
