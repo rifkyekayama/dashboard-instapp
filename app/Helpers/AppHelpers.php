@@ -13,4 +13,10 @@ class AppHelpers{
 		$mix = $url['scheme']."://".$url['host'].$port.$url['path'];
 		return $mix;
 	}
+
+	public static function priceConverter($price){
+		$value = preg_replace("/.00 IDR/", "", $price);
+		$value = str_replace(",", "", $value);
+		return $value;
+	}
 }

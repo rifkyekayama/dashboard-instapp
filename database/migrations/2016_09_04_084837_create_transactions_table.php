@@ -14,15 +14,17 @@ class CreateTransactionsTable extends Migration
     public function up()
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('id_transaction');
-            $table->string('id_customer');
+            // $table->increments('id');
+            $table->Integer('id_transaction');
+            $table->unsignedInteger('id_customer');
             $table->string('delivery_type');
-            $table->string('delivery_price');
-            $table->string('amount_to_charge');
+            $table->integer('delivery_price');
+            $table->integer('amount_to_charge');
             $table->string('payment_solution');
             $table->string('special_request');
             $table->timestamps();
+
+            $table->primary('id_transaction');
         });
     }
 

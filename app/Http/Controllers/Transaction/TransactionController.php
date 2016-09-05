@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Transaction\Transaction;
+use App\Models\Transaction\TransactionDetail;
 
 class TransactionController extends Controller
 {
@@ -52,6 +53,8 @@ class TransactionController extends Controller
     public function show($id)
     {
         //
+        $transDetail = TransactionDetail::where('id_transaction', $id)->get();
+        return view('pages.transaction._detailTransaction', ['transDetail' => $transDetail]);
     }
 
     /**

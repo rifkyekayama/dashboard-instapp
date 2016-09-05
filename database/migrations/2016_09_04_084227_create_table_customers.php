@@ -15,8 +15,8 @@ class CreateTableCustomers extends Migration
     {
         //
         Schema::create('customers', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('customer_id');
+            // $table->increments('id');
+            $table->unsignedInteger('customer_id');
             $table->string('login');
             $table->string('name');
             $table->string('address');
@@ -30,6 +30,8 @@ class CreateTableCustomers extends Migration
             $table->string('contact_email');
             $table->string('link_to_customer');
             $table->timestamps();
+
+            $table->primary('customer_id');
         });
     }
 

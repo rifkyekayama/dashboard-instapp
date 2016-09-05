@@ -11,6 +11,7 @@ use App\Models\Transaction\Transaction;
 use App\Models\Transaction\TransactionDetail;
 
 use App\Helpers\MailHelpers;
+use App\Helpers\AppHelpers;
 
 class homeController extends Controller
 {
@@ -73,25 +74,29 @@ class homeController extends Controller
 				$cust->save();
 			}
 
-			$trans = new Transaction;
-			$trans->id_transaction		= $val['id'];
-			$trans->id_customer 		= $val['customer_id'];
-			$trans->delivery_type 		= $val['delivery_type'];
-			$trans->delivery_price 		= $val['delivery_price'];
-			$trans->amount_to_charge 	= $val['amount_to_charge'];
-			$trans->payment_solution 	= $val['payment_solution'];
-			$trans->special_request 	= $val['special_request'];
-			$trans->save();
+			$transaction = Transaction::where('id_transaction', $val['id'])->first();
+			if($transaction == null){
+				$trans = new Transaction;
+				$trans->id_transaction		= $val['id'];
+				$trans->id_customer 		= $val['customer_id'];
+				$trans->delivery_type 		= $val['delivery_type'];
+				$trans->delivery_price 		= AppHelpers::priceConverter($val['delivery_price']);
+				$trans->amount_to_charge 	= AppHelpers::priceConverter($val['amount_to_charge']);
+				$trans->payment_solution 	= $val['payment_solution'];
+				$trans->special_request 	= $val['special_request'];
+				$trans->save();
 
-			$items = json_decode($val['details']);
-			foreach($items as $item){
-				$transDetail = new TransactionDetail;
-				$transDetail->id_transaction	= $val['id'];
-				$transDetail->product 			= $item[0];
-				$transDetail->price 			= $item[1];
-				$transDetail->quantity 			= $item[2];
-				$transDetail->save();
+				$items = json_decode($val['details']);
+				foreach($items as $item){
+					$transDetail = new TransactionDetail;
+					$transDetail->id_transaction	= $val['id'];
+					$transDetail->product 			= $item[0];
+					$transDetail->price 			= AppHelpers::priceConverter($item[1]);
+					$transDetail->quantity 			= str_replace("x ", "", $item[2]);
+					$transDetail->save();
+				}
 			}
 		}
+		dd($order);
 	}
 }

@@ -43,12 +43,26 @@
 							<thead>
 								<tr>
 									<th>Transaction ID</th>
+									<th>Customer</th>
+									<th>Delivery Type</th>
+									<th>Delivery Price</th>
+									<th>Amount to Charge</th>
+									<th>Payment Solution</th>
+									<th>Special Request</th>
+									<th>Transaction Details</th>
 								</tr>
 							</thead>
 							<tbody>
 								@foreach($transactions as $transaction)
 									<tr>
-										<td></td>
+										<td>{{ $transaction->id_transaction }}</td>
+										<td>{!! $transaction->customers->link_to_customer !!}</td>
+										<td>{{ $transaction->delivery_type }}</td>
+										<td>{{ "Rp. ".number_format($transaction->delivery_price, "0", ",", ".") }}</td>
+										<td>{{ "Rp. ".number_format($transaction->amount_to_charge, "0", ",", ".") }}</td>
+										<td>{{ $transaction->payment_solution }}</td>
+										<td>{{ $transaction->special_request }}</td>
+										<td><button class="waves-effect waves-light btn light-blue" data-id="{{ $transaction->id_transaction }}" id="btnDetail">Details</button></td>
 									</tr>
 								@endforeach
 							</tbody>
@@ -72,4 +86,34 @@
 		<!-- Floating Action Button -->
 	</div>
 	<!--end container-->
+
+	<div id="modal1" class="modal">
+		<div class="modal-content">
+			
+		</div>
+		<div class="modal-footer">
+			<button class="waves-effect waves-red btn-flat" id="closeModal">Close</button>
+		</div>
+	</div>
+@endsection
+
+@section('js')
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#btnDetail').on("click", function(){
+				$.ajax({
+					type: "GET",
+					url: "{{ url('transaction') }}"+"/"+this.getAttribute('data-id'),
+					success: function(data){
+						$('.modal-content').html(data);
+						$('#modal1').openModal();
+					}
+				});
+			});
+
+			$('#closeModal').on("click", function(){
+				$('#modal1').closeModal();
+			});
+		});
+	</script>
 @endsection
