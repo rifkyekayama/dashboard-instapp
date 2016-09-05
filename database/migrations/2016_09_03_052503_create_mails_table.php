@@ -16,6 +16,7 @@ class CreateMailsTable extends Migration
         Schema::create('mails', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('mail_index');
+            $table->enum('mailTypes', ['form_editor', 'order']);
             $table->dateTime('date');
             $table->string('from');
             $table->string('subject');
