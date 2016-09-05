@@ -39,7 +39,7 @@
 				<h4 class="header">Transations</h4>
 				<div class="row">
 					<div class="col l12">
-						<table class="responsive-table" id="tableMail">
+						<table class="responsive-table" id="tableTransaction">
 							<thead>
 								<tr>
 									<th>Transaction ID</th>
@@ -100,7 +100,7 @@
 @section('js')
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('#btnDetail').on("click", function(){
+			$('#tableTransaction').on("click", "#btnDetail", function(){
 				$.ajax({
 					type: "GET",
 					url: "{{ url('transaction') }}"+"/"+this.getAttribute('data-id'),
