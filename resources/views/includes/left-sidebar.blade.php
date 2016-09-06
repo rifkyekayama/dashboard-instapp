@@ -26,6 +26,7 @@
 		</li>
 		<li class="bold"><a href="{{ route('index') }}" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> {{ trans('menu.dashboard') }}</a>
 		</li>
+		<li class="bold"><a href="{{ route('form_editor.index') }}" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Form Editor</a>
 		<li class="bold"><a href="{{ route('mail.index') }}" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Mailbox <span class="new badge">4</span></a>
 		</li>
 		<li class="bold"><a href="{{ route('customer.index') }}" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Customer Management</a>

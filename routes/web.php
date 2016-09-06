@@ -12,7 +12,7 @@
 */
 // Route Login
 Route::get('login', ['as' => 'auth.login', 'uses' => 'Auth\LoginController@showLoginForm']);
-// Route::post('login', ['as' => 'auth.login', 'uses' => 'Auth\LoginController@login']);
+Route::post('login', ['as' => 'auth.login', 'uses' => 'Auth\LoginController@login']);
 // Route::get('logout', ['as' => 'auth.logout', 'uses' => 'Auth\LoginController@logout']);
 
 // // Registration Routes...
@@ -24,15 +24,15 @@ Route::get('login', ['as' => 'auth.login', 'uses' => 'Auth\LoginController@showL
 // Route::post('password/email', ['as' => 'auth.password.email', 'uses' => 'Auth\PasswordController@sendResetLinkEmail']);
 // Route::post('password/reset', ['as' => 'auth.password.reset', 'uses' => 'Auth\PasswordController@reset']);
 
-// Route::group(['middleware' => ['auth', 'auth.policy']], function(){
+Route::group(['middleware' => ['auth', 'auth.policy']], function(){
 	Route::get('/', ['as' => 'index', 'uses' => 'homeController@index']);
 	Route::get('unread', ['as' => 'mail', 'uses' => 'Mails\MailsController@messageUnRead']);
 	Route::get('allmessage', ['as' => 'mail', 'uses' => 'Mails\MailsController@allMessage']);
 
-	Route::get('order', ['as' => 'order', 'uses' => 'homeController@order']);
 
 	Route::resource('mail', 'Mails\MailsController');
-
 	Route::resource('customer', 'Transaction\CustomerController');
 	Route::resource('transaction', 'Transaction\TransactionController');
-// });
+	Route::get('order', ['as' => 'order', 'uses' => 'Transaction\TransactionController@order']);
+	Route::resource('form_editor', 'FormEditor\FormEditorController');
+});
