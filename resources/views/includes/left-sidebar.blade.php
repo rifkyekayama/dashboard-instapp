@@ -33,6 +33,8 @@
 		</li>
 		<li class="bold"><a href="{{ route('transaction.index') }}" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Transaction Management</a>
 		</li>
+		<li class="bold"><a href="{{ route('product.index') }}" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Product  Management</a>
+		</li>
 		<li class="no-padding">
 			<ul class="collapsible collapsible-accordion">
 				<li class="bold"><a class="collapsible-header  waves-effect waves-cyan {{ Request::is(App::getLocale().'/userControl/*') ? 'active' : '' }}"><i class="mdi-action-account-circle"></i> {{ trans('menu.userControl') }}</a>
