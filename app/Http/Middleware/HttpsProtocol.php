@@ -20,6 +20,5 @@ class HttpsProtocol
             }
 
         return $next($request);
-        return $next($request);
     }
 }
